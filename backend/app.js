@@ -13,13 +13,11 @@ const app = express();
 //app.use(cors());
 //app.use(express.json());
 
-app.use(
-    cors({
-        origin: [process.env.FRONTEND_URL],
-        methods: ["POST"],
-        credentials: true,
-    })
-);
+app.use(cors({
+  origin: "https://sandhita-15.github.io",
+  credentials: true
+}));
+//app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true })
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
