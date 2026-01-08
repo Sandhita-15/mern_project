@@ -17,14 +17,15 @@ const Reservation = () => {
   const handleReservation = async (e) => {
     e.preventDefault();
     try {
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
       const { data } = await axios.post(
-  "http://localhost:4000/api/v1/reservation/send",
-  { firstName, lastName, email, date, time, phone },
-  {
-    headers: { "Content-Type": "application/json" },
-    withCredentials: true,
-  }
-);
+        `${backendUrl}/api/v1/reservation/send`,
+        { firstName, lastName, email, date, time, phone },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
 
       toast.success(data.message);
       setFirstName("");
